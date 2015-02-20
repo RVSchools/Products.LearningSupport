@@ -1,0 +1,276 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+  <head><title></title></head>
+  <body>
+
+    <div metal:define-macro="header">
+      <metal:block define-slot="title">
+        <h1 i18n:translate="heading_add_item" class="documentFirstHeading"
+            tal:condition="python:context.checkCreationFlag()">
+          Add
+          <span i18n:name="itemtype"
+                tal:define="fti python:here.portal_types.getTypeInfo(here)">
+            <span i18n:translate=""
+                  tal:content="fti/Title"
+                  tal:omit-tag="">Item type</span>
+          </span>
+        </h1>
+        <h1 i18n:translate="heading_edit_item" class="documentFirstHeading"
+            tal:condition="python: not context.checkCreationFlag()">
+          Edit
+          <span i18n:name="itemtype"
+                tal:define="fti python:here.portal_types.getTypeInfo(here)">
+             <span i18n:translate=""
+                   tal:content="fti/Title"
+                   tal:omit-tag="">Item type</span>
+          </span>
+        </h1>
+
+<dl class="portalMessage info"
+    tal:condition="here/@@plone/isDefaultPageInFolder">
+    <dt i18n:translate="">
+        Info
+    </dt>
+    <dd i18n:translate="label_edit_default_view_container">
+        You are editing the default view of a container. If you wanted to edit the container itself,
+       <a href=""
+          i18n:name="go_here"
+          i18n:translate="label_edit_default_view_container_go_here"
+          tal:attributes="href string:${context/aq_inner/aq_parent/absolute_url}/edit">go here</a>.
+    </dd>
+</dl>
+
+       </metal:block>
+
+      <div id="archetypes-schemata-links"
+           tal:condition="python: fieldsets and not allow_tabbing">
+        <tal:block repeat="set fieldsets">
+          <tal:current condition="python:set == fieldset and fieldsets != ['default']">
+            <strong>[<span tal:content="set" i18n:translate="" />]</strong>
+          </tal:current>
+          <tal:others condition="python:set != fieldset">
+            <a href="#" tal:attributes="href string:${here/absolute_url}/${template/getId}?fieldset=${set}">
+            [<span tal:content="set" i18n:translate="" />]</a>
+          </tal:others>
+        </tal:block>
+      </div>
+      <metal:block define-slot="extra_info" />
+
+    </div>
+
+    <div metal:define-macro="typedescription">
+        <tal:description tal:define="fti python:here.portal_types.getTypeInfo(here);
+                                     desc fti/Description;"
+                         tal:condition="desc">
+            <p class="discreet" i18n:translate="" tal:content="desc">
+                type description
+            </p>
+        </tal:description>
+    </div>
+
+    <div metal:define-macro="body"
+         tal:condition="not:isLocked"
+         tal:define="portal_type portal_type|string:unknowntype">
+      <form name="edit_form"
+                        method="post"
+                        enctype="multipart/form-data"
+                        class="enableUnloadProtection enableAutoFocus atBaseEditForm"
+                        action=""
+                        id=""
+                        tal:attributes="action python:here.absolute_url()+'/'+template.id;
+                                        id string:${portal_type}-base-edit;
+                                        class python:test(path('allow_tabbing|nothing'), 'enableAutoFocus enableUnlockProtection', 'enableAutoFocus enableUnlockProtection');">
+                      <metal:block define-slot="extra_top" />
+
+                      <metal:block define-slot="widgets">
+                        <tal:tabbed tal:condition="allow_tabbing | nothing">
+                          <tal:fieldsets define="sole_fieldset python:len(fieldsets)==1"
+                            repeat="fieldset fieldsets">
+                            <fieldset tal:define="normalizeString nocall:context/@@plone/normalizeString;
+                                                  fieldsetid python:normalizeString(fieldset)"
+                                      tal:condition="python: fieldset!='metadata'"
+                                      tal:attributes="id string:fieldset-${fieldsetid}"
+                                      tal:omit-tag="sole_fieldset">
+                              <legend id=""
+                                      tal:content="python: view.getTranslatedSchemaLabel(fieldset)"
+                                      tal:attributes="id string:fieldsetlegend-${fieldsetid}"
+                                      i18n:translate=""
+                                      tal:condition="not:sole_fieldset" />
+                              <tal:fields repeat="field python:schematas[fieldset].editableFields(here, visible_only=True)">
+                                <tal:fldblock define="fldName python: field.getName()">
+                          <tal:block tal:condition="python: fldName=='g1Custody'" tal:replace='structure string:<div class="lform-left"><h2>Parent/Guardian 1</h2>' />
+                          <tal:block tal:condition="python: fldName=='g2Custody'" tal:replace='structure string:<div class="lform-right"><h2>Parent/Guardian 2</h2>' />
+                          <tal:block tal:condition="python: fldName in ('ass1date','givenName','ext1Date')" tal:replace='structure string:<div class="lform-right">' />
+                    <tal:block tal:condition="python: fldName in ('assessment1','surname','ext1Name')" tal:replace='structure string:<div class="lform-left">' />
+                          <div tal:condition="python: fldName=='attachment1'">
+                            <p>Please attach copies of all relevant supporting documentation (current hearing/vision screen, informal academic assessments, SRG notes, IPP summary report, anecdotal notes, behaviour support plans, academic history, etc.). This supporting documentation <strong>MUST</strong> be attached to this form . <strong>DO NOT SEND IT SEPARATELY.</strong> This is essential to activate your request.</p>
+                            <p>Note: If a custody order, access order, or a Child & Family Services order is in place, a copy of the order <strong>MUST</strong> be included in this supporting documentation.</p>
+                          </div>
+                                <metal:fieldMacro use-macro="python:here.widget(field.getName(), mode='edit')" />
+                          <div tal:condition="python: fldName=='custody' or fldName=='cfsaCare'">
+                  If yes, legal documentation is required. Please attach a copy of the order to this form as part of the supporting documentation. You can do this in the Supporting Documentation section at the end of this form. 
+                    </div>
+                          <tal:block tal:condition="python: fldName=='g1PhoneCell'" tal:replace="structure string:</div>" />
+                          <tal:block tal:condition="python: fldName=='g2PhoneCell'" tal:replace="structure string:</div>" />
+                          <tal:block tal:condition="python: fldName in ('screenHearing','screenHearingDate','altSurname','altGivenName','ext5Name','ext5Date')" tal:replace='structure string:</div>' />
+                                </tal:fldblock>
+                              </tal:fields>
+                            </fieldset>
+                          </tal:fieldsets>
+                        </tal:tabbed>
+                        <tal:nottabbed tal:condition="not: allow_tabbing | nothing">
+                            <tal:fields repeat="field python:schematas[fieldset].editableFields(here, visible_only=True)">
+                              <metal:fieldMacro use-macro="python:here.widget(field.getName(), mode='edit')" />
+                            </tal:fields>
+                        </tal:nottabbed>
+                      </metal:block>
+                <fieldset id="completion-block">
+                  <legend>Completing this Request</legend>
+                  <div>Once you click 'Save' to submit this form, your Request will be transmitted to the Learning Support Team and you will no longer have access to it.  If you wish to print or save a copy for your student file, please do so now.</div>
+                  <div id="print-action"><a href="javascript:this.print();">Print...</a></div>
+                </fieldset> 
+                      <div tal:replace="structure provider:archetypes.edit.afterfieldsets" />
+
+                      <metal:block define-slot="extra_bottom" />
+
+                      <div class="formControls">
+                  <tal:fieldsets repeat="fieldset fieldsets">
+                          <input type="hidden"
+                                 name="fieldsets:list"
+                                 value="default"
+                                 tal:attributes="value fieldset"
+                               />
+                  </tal:fieldsets>
+
+                  <input type="hidden"
+                     name="fieldset"
+                     tal:attributes="value fieldset"
+                     tal:condition="python: fieldsets and not allow_tabbing"
+                     />
+
+                  
+                        <input type="hidden"
+                               name="form.submitted"
+                               value="1"
+                               />
+                        <input type="hidden"
+                               name="add_reference.field:record"
+                               value=""
+                               />
+                        <input type="hidden"
+                               name="add_reference.type:record"
+                               value=""
+                               />
+                        <input type="hidden"
+                               name="add_reference.destination:record"
+                               value=""
+                               />
+
+                        <tal:env define="env request/controller_state/kwargs">
+                          <tal:loop repeat="varname python:('reference_source_url', 'reference_source_field', 'reference_source_fieldset')">
+                            <tal:reference define="items python:env.get(varname, request.get(varname))"
+                                           condition="items">
+                              <input tal:repeat="item items"
+                                     type="hidden"
+                                     name="form_env.reference_source_url:list:record"
+                                     value="value"
+                                     tal:attributes="value item;
+                                                     name string:form_env.${varname}:list:record"
+                                     />
+                            </tal:reference>
+                          </tal:loop>
+                        </tal:env>
+
+                        <tal:comment replace="nothing">
+                          Turn 'persistent_' variables from controller_state persistent
+                        </tal:comment>
+                        <tal:env repeat="env request/controller_state/kwargs/items">
+                          <input type="hidden"
+                                 name="key"
+                                 value="value"
+                                 tal:define="key python:env[0];
+                                             value python:env[1]"
+                                 tal:condition="python:key.startswith('persistent_')"
+                                 tal:attributes="name string:form_env.${key}:record;
+                                                 value value"
+                                 />
+                        </tal:env>
+
+                        <tal:comment replace="nothing">
+                          Turn 'persistent_' variables from forms (GET/POST) persistent
+                        </tal:comment>
+                        <tal:env repeat="env request/form">
+                          <input type="hidden"
+                                 name="key"
+                                 value="value"
+                                 tal:define="key env;
+                                             value request/?env"
+                                 tal:condition="python:key.startswith('persistent_')"
+                                 tal:attributes="name string:form_env.${key}:record;
+                                                 value value"
+                                 />
+                        </tal:env>
+
+                        <tal:comment replace="nothing">
+                          Store referrer to remember where to go back
+                        </tal:comment>
+                        <input type="hidden"
+                               name="last_referer"
+                               tal:define="last_referer python:here.session_restore_value('HTTP_REFERER', request.form.get('last_referer', request.get('HTTP_REFERER')))"
+                               tal:attributes="value python:(last_referer and '%s/%s' % (here.absolute_url(), template.id) not in last_referer) and last_referer or (here.getParentNode() and here.getParentNode().absolute_url())"
+                               />
+
+                        <metal:block define-slot="buttons"
+                               tal:define="fieldset_index python:fieldset in fieldsets and fieldsets.index(fieldset);
+                                           n_fieldsets python:len(fieldsets)">
+
+                            <input tal:condition="python:fieldset_index &gt; 0"
+                                   class="context"
+                                   type="submit"
+                                   name="form.button.previous"
+                                   value="Previous"
+                                   i18n:attributes="value label_previous;"
+                                   tal:attributes="disabled python:test(isLocked, 'disabled', None);"
+                                   />
+                            <input tal:condition="python:not allow_tabbing and (fieldset_index &lt; n_fieldsets - 1)"
+                                   class="context"
+                                   type="submit"
+                                   name="form.button.next"
+                                   value="Next"
+                                   i18n:attributes="value label_next;"
+                                   tal:attributes="disabled python:test(isLocked, 'disabled', None);"
+                                   />
+                            <input class="context"
+                                   type="submit"
+                                   name="form.button.save"
+                                   value="Save"
+                                   i18n:attributes="value label_save;"
+                                   tal:attributes="disabled python:test(isLocked, 'disabled', None);"
+                                   />
+                            <input class="standalone"
+                                   type="submit"
+                                   name="form.button.cancel"
+                                   value="Cancel"
+                                   i18n:attributes="value label_cancel;"
+                                   />
+                        </metal:block>
+
+                        <metal:block define-slot="extra_buttons" />
+
+                      </div>
+
+                  </form>
+
+    </div>
+
+    <metal:footer_macro define-macro="footer">
+    </metal:footer_macro>
+        
+  </body>
+
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<import-steps>
+
+ 
+
+
+ <import-step 
+    id="LearningSupport-Update-RoleMappings" 
+    handler="Products.LearningSupport.setuphandlers.updateRoleMappings"
+    title="Update Workflow role mappings for LearningSupport"
+    version="2010-10-01T10:30:43.597412">
+   <dependency step="LearningSupport-QI-dependencies"/>
+   updates the workflow role mappings for LearningSupport
+ </import-step>
+
+ <import-step 
+    id="LearningSupport-postInstall" 
+    handler="Products.LearningSupport.setuphandlers.postInstall"
+    title="manual coded post-install for LearningSupport"
+    version="2010-10-01T10:30:43.597412">
+   <dependency step="LearningSupport-QI-dependencies"/>
+   manual coded post-install for LearningSupport
+ </import-step>
+
+<!-- ##code-section ADDITIONALSTEPS -->
+<!-- ##/code-section ADDITIONALSTEPS -->
+
+</import-steps>
+ 

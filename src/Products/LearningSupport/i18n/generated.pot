@@ -1,0 +1,313 @@
+# archgenxml generated POT File
+# unknown <unknown>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: LearningSupport\n"
+"POT-Creation-Date: Fri Oct  1 10:30:34 2010\n"
+"PO-Revision-Date: Fri Oct  1 10:30:34 2010\n"
+"Last-Translator: unknown <unknown>\n"
+"Language-Team: unknown <unknown>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: LearningSupport\n"
+
+#. Default: "In some instances a student may be under the care of Child & Family Services Authority.  Does this authority exist?"
+#: content/Request.py
+msgid "LearningSupport_help_cfsaCare"
+msgstr ""
+
+#. Default: "In some instances a student may be the subject of a parental custody or access order.  Does such an order exist?"
+#: content/Request.py
+msgid "LearningSupport_help_custody"
+msgstr ""
+
+#. Default: "Age"
+#: content/Request.py
+msgid "LearningSupport_label_age"
+msgstr ""
+
+#. Default: "Alternate Given Name(s) (AKA)"
+#: content/Request.py
+msgid "LearningSupport_label_altGivenName"
+msgstr ""
+
+#. Default: "Alternate Surname (AKA)"
+#: content/Request.py
+msgid "LearningSupport_label_altSurname"
+msgstr ""
+
+#. Default: "Formalized Assessments"
+#: content/Request.py
+msgid "LearningSupport_label_assessments"
+msgstr ""
+
+#. Default: "Under CFSA (Child & Family Services Authority) Care?"
+#: content/Request.py
+msgid "LearningSupport_label_cfsaCare"
+msgstr ""
+
+#. Default: "Social Worker's Email"
+#: content/Request.py
+msgid "LearningSupport_label_cfsaEmail"
+msgstr ""
+
+#. Default: "Social Worker's Name"
+#: content/Request.py
+msgid "LearningSupport_label_cfsaName"
+msgstr ""
+
+#. Default: "Social Worker's Phone"
+#: content/Request.py
+msgid "LearningSupport_label_cfsaPhone"
+msgstr ""
+
+#. Default: "Parental Custody/Access Order"
+#: content/Request.py
+msgid "LearningSupport_label_custody"
+msgstr ""
+
+#. Default: "Date of Birth"
+#: content/Request.py
+msgid "LearningSupport_label_dob"
+msgstr ""
+
+#. Default: "Special Education Exception Code"
+#: content/Request.py
+msgid "LearningSupport_label_exceptionCode"
+msgstr ""
+
+#. Default: "Ext1date"
+#: content/Request.py
+msgid "LearningSupport_label_ext1Date"
+msgstr ""
+
+#. Default: "Ext1name"
+#: content/Request.py
+msgid "LearningSupport_label_ext1Name"
+msgstr ""
+
+#. Default: "Ext2date"
+#: content/Request.py
+msgid "LearningSupport_label_ext2Date"
+msgstr ""
+
+#. Default: "Ext2name"
+#: content/Request.py
+msgid "LearningSupport_label_ext2Name"
+msgstr ""
+
+#. Default: "Ext3date"
+#: content/Request.py
+msgid "LearningSupport_label_ext3Date"
+msgstr ""
+
+#. Default: "Ext3name"
+#: content/Request.py
+msgid "LearningSupport_label_ext3Name"
+msgstr ""
+
+#. Default: "Parent 1 City"
+#: content/Request.py
+msgid "LearningSupport_label_g1City"
+msgstr ""
+
+#. Default: "Custodial Parent?"
+#: content/Request.py
+msgid "LearningSupport_label_g1Custody"
+msgstr ""
+
+#. Default: "Parent 1 Given Name(s)"
+#: content/Request.py
+msgid "LearningSupport_label_g1GivenName"
+msgstr ""
+
+#. Default: "Parent 1 Home Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g1Phone"
+msgstr ""
+
+#. Default: "Parent 1 Cell Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g1PhoneCell"
+msgstr ""
+
+#. Default: "Parent 1 Work Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g1PhoneWork"
+msgstr ""
+
+#. Default: "Parent 1 Postal Code"
+#: content/Request.py
+msgid "LearningSupport_label_g1Postal"
+msgstr ""
+
+#. Default: "Parent 1 Province"
+#: content/Request.py
+msgid "LearningSupport_label_g1Province"
+msgstr ""
+
+#. Default: "Parent 1 Street Address"
+#: content/Request.py
+msgid "LearningSupport_label_g1Street"
+msgstr ""
+
+#. Default: "Parent 1 Surname"
+#: content/Request.py
+msgid "LearningSupport_label_g1Surname"
+msgstr ""
+
+#. Default: "Parent 2 City"
+#: content/Request.py
+msgid "LearningSupport_label_g2City"
+msgstr ""
+
+#. Default: "Custodial Parent?"
+#: content/Request.py
+msgid "LearningSupport_label_g2Custody"
+msgstr ""
+
+#. Default: "Parent 2 Given Name(s)"
+#: content/Request.py
+msgid "LearningSupport_label_g2GivenName"
+msgstr ""
+
+#. Default: "Parent 2 Home Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g2Phone"
+msgstr ""
+
+#. Default: "Parent 2 Cell Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g2PhoneCell"
+msgstr ""
+
+#. Default: "Parent 2 Work Phone"
+#: content/Request.py
+msgid "LearningSupport_label_g2PhoneWork"
+msgstr ""
+
+#. Default: "Parent 2 Postal Code"
+#: content/Request.py
+msgid "LearningSupport_label_g2Postal"
+msgstr ""
+
+#. Default: "Parent 2 Province"
+#: content/Request.py
+msgid "LearningSupport_label_g2Province"
+msgstr ""
+
+#. Default: "Parent 2 Street Address"
+#: content/Request.py
+msgid "LearningSupport_label_g2Street"
+msgstr ""
+
+#. Default: "Parent 2 Surname"
+#: content/Request.py
+msgid "LearningSupport_label_g2Surname"
+msgstr ""
+
+#. Default: "Gender"
+#: content/Request.py
+msgid "LearningSupport_label_gender"
+msgstr ""
+
+#. Default: "Given Name(s)"
+#: content/Request.py
+msgid "LearningSupport_label_givenName"
+msgstr ""
+
+#. Default: "Grade"
+#: content/Request.py
+msgid "LearningSupport_label_grade"
+msgstr ""
+
+#. Default: "Aboriginal Student?"
+#: content/Request.py
+msgid "LearningSupport_label_native"
+msgstr ""
+
+#. Default: "Please provide the intended outcomes of this request"
+#: content/Request.py
+msgid "LearningSupport_label_outcomes"
+msgstr ""
+
+#. Default: "School Administrator Aware?"
+#: content/Request.py
+msgid "LearningSupport_label_pscAdminAware"
+msgstr ""
+
+#. Default: "School Administrator"
+#: content/Request.py
+msgid "LearningSupport_label_pscAdminName"
+msgstr ""
+
+#. Default: "PSC's Email"
+#: content/Request.py
+msgid "LearningSupport_label_pscEmail"
+msgstr ""
+
+#. Default: "Primary School Contact's (PSC) Name"
+#: content/Request.py
+msgid "LearningSupport_label_pscName"
+msgstr ""
+
+#. Default: "PSC's Phone"
+#: content/Request.py
+msgid "LearningSupport_label_pscPhone"
+msgstr ""
+
+#. Default: "PSC's Title"
+#: content/Request.py
+msgid "LearningSupport_label_pscTitle"
+msgstr ""
+
+#. Default: "Please provide the reason for this request"
+#: content/Request.py
+msgid "LearningSupport_label_reasons"
+msgstr ""
+
+#. Default: "Requested Resources"
+#: content/Request.py
+msgid "LearningSupport_label_resources"
+msgstr ""
+
+#. Default: "School"
+#: content/Request.py
+msgid "LearningSupport_label_school"
+msgstr ""
+
+#. Default: "School  Programs and Strategies available"
+#: content/Request.py
+msgid "LearningSupport_label_schoolInfo"
+msgstr ""
+
+#. Default: "Screenings"
+#: content/Request.py
+msgid "LearningSupport_label_screenings"
+msgstr ""
+
+#. Default: "Supporting Information"
+#: content/Request.py
+msgid "LearningSupport_label_supportInfo"
+msgstr ""
+
+#. Default: "Legal Surname"
+#: content/Request.py
+msgid "LearningSupport_label_surname"
+msgstr ""
+
+#. Default: "Case Identifier"
+#: content/Request.py
+msgid "LearningSupport_label_title"
+msgstr ""
+
+#. Default: "Treaty Number"
+#: content/Request.py
+msgid "LearningSupport_label_treaty"
+msgstr ""
+
